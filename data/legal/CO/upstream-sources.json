@@ -1,0 +1,134 @@
+{
+  "schema_version": "legal-upstream-source-registry.v1",
+  "jurisdiction": "CO",
+  "generated_from": "data/legal/CO/sources.json",
+  "policy": {
+    "transport": "https_only_tls_verified",
+    "allowed_hosts": [
+      "www.suin-juriscol.gov.co",
+      "suin-juriscol.gov.co"
+    ],
+    "raw_snapshot_required_for_local_fulltext_claim": true,
+    "sha256_required": true,
+    "vigencia_rule": "Official-source metadata and downloaded text do not constitute certified vigencia; article-level legal review remains required."
+  },
+  "sources": [
+    {
+      "source_id": "co-constitution-1991",
+      "official_title": "Constitución Política de Colombia de 1991",
+      "identifier": "Constitución Política de 1991",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1687988",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1687988-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-civil-1873",
+      "official_title": "Código Civil de los Estados Unidos de Colombia",
+      "identifier": "Ley 84 de 1873",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1827111",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1827111-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-labor-code",
+      "official_title": "Código Sustantivo del Trabajo",
+      "identifier": "CST; Decretos 2663 y 3743 de 1950 y 905 de 1951",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=30019323",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-30019323-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-cgp-2012",
+      "official_title": "Código General del Proceso",
+      "identifier": "Ley 1564 de 2012",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1683572",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1683572-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-penal-2000",
+      "official_title": "Código Penal",
+      "identifier": "Ley 599 de 2000",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1663230",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1663230-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-cpp-2004",
+      "official_title": "Código de Procedimiento Penal",
+      "identifier": "Ley 906 de 2004",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1670249",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1670249-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-notariado-960-1970",
+      "official_title": "Estatuto del Notariado",
+      "identifier": "Decreto 960 de 1970",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1692245",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1692245-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Dejó de estar vigente según cabecera SUIN",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-civil-registry-1260-1970",
+      "official_title": "Estatuto del Registro del Estado Civil de las Personas",
+      "identifier": "Decreto 1260 de 1970",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1254136",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1254136-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    },
+    {
+      "source_id": "co-childhood-1098-2006",
+      "official_title": "Código de la Infancia y la Adolescencia",
+      "identifier": "Ley 1098 de 2006",
+      "publisher": "SUIN-Juriscol — Ministerio de Justicia y del Derecho",
+      "official_url": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1673639",
+      "expected_host": "www.suin-juriscol.gov.co",
+      "registry_version_id": "suin-1673639-2026-08-31",
+      "registry_last_verified_at": "2026-08-31",
+      "suin_reported_status": "Vigente",
+      "certified_vigencia": false,
+      "local_fulltext_snapshot": null
+    }
+  ]
+}

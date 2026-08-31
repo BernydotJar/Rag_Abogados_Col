@@ -1,0 +1,251 @@
+{
+  "schema_version": "legal-evidence-corpus.v1",
+  "jurisdiction": "CO",
+  "coverage": "partial_demo",
+  "evidence": [
+    {
+      "id": "co-const-art1",
+      "source_id": "co-constitution-1991",
+      "article_or_section": "Artículo 1",
+      "text": "Colombia es un Estado social de derecho, organizado en forma de República unitaria.",
+      "retrieval_domains": [
+        "general",
+        "constitucional"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "7ace92ed9249b697387e3b77fcbdd1cd31c8543ea4f8eadbdf7f0facfe68500f",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "cp-art1-suin-2026-08-31",
+      "version_basis": "Consolidación SUIN verificada; Constitución reportada vigente.",
+      "effective_from": "1991-07-07",
+      "effective_to": null
+    },
+    {
+      "id": "co-const-art53",
+      "source_id": "co-constitution-1991",
+      "article_or_section": "Artículo 53",
+      "text": "La ley correspondiente tendrá en cuenta por lo menos los siguientes principios mínimos fundamentales.",
+      "retrieval_domains": [
+        "constitucional",
+        "laboral"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "605a945a39939e71aefc31b922e570138f57cccbf77ac863fdfabed4f1c223f9",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "cp-art53-suin-2026-08-31",
+      "version_basis": "Artículo 53 presente en consolidación SUIN verificada; fuente reportada vigente.",
+      "effective_from": "1991-07-07",
+      "effective_to": null
+    },
+    {
+      "id": "co-civil-art1502",
+      "source_id": "co-civil-1873",
+      "article_or_section": "Artículo 1502",
+      "text": "Para que una persona se obligue a otra por un acto o declaración de voluntad, es necesario: 1) que sea legalmente capaz; 2) que consienta en dicho acto o declaración y su consentimiento no adolezca de vicio; 3) que recaiga sobre un objeto lícito; 4) que tenga una causa lícita.",
+      "retrieval_domains": [
+        "civil",
+        "general",
+        "notarial"
+      ],
+      "vigencia_status": "article_present_in_current_suin_consolidation",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "ebb7ce2e7e2a7b0fc101b6417d7fe41bb6d660c60ecb08846af664b776897f91",
+      "excerpt_scope": "operative_requirements",
+      "version_id": "cc-art1502-suin-2026-08-31",
+      "version_basis": "Artículo 1502 presente en la consolidación SUIN verificada; la fuente reporta el Código Civil como vigente, sin certificación ministerial de vigencia.",
+      "effective_from": null,
+      "effective_to": null
+    },
+    {
+      "id": "co-cst-art23",
+      "source_id": "co-labor-code",
+      "article_or_section": "Artículo 23",
+      "text": "Para que haya contrato de trabajo se requiere que concurran estos tres elementos esenciales: a) La actividad personal del trabajador, realizada por sí mismo; b) La continuada subordinación o dependencia del trabajador o trabajadora respecto del empleador; c) Un salario como retribución del servicio.",
+      "retrieval_domains": [
+        "laboral"
+      ],
+      "vigencia_status": "modified_by_law_2466_2025",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "4044069eda48452b7ab5cc7148782652aba929084d4fc5a41a9c6771d25d6789",
+      "excerpt_scope": "selected_operational_clauses",
+      "version_id": "cst-art23-ley2466-2025",
+      "version_basis": "Consolidación SUIN del artículo 23 con literal b modificado por el artículo 16 de la Ley 2466 de 2025.",
+      "effective_from": "2025-06-25",
+      "effective_to": null,
+      "modifier": "Ley 2466 de 2025, artículo 16"
+    },
+    {
+      "id": "co-cgp-art1",
+      "source_id": "co-cgp-2012",
+      "article_or_section": "Artículo 1",
+      "text": "Este código regula la actividad procesal en los asuntos civiles, comerciales, de familia y agrarios.",
+      "retrieval_domains": [
+        "civil",
+        "familia",
+        "general"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "c6babed94074dea103c6c05be89ff1f21fe37e53d125fd87c9f9eefcabbeff8a",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "cgp-art1-suin-2026-08-31",
+      "version_basis": "Artículo presente en consolidación SUIN de Ley 1564 de 2012 reportada vigente.",
+      "effective_from": null,
+      "effective_to": null
+    },
+    {
+      "id": "co-cgp-art167",
+      "source_id": "co-cgp-2012",
+      "article_or_section": "Artículo 167",
+      "text": "Incumbe a las partes probar el supuesto de hecho de las normas que consagran el efecto jurídico que ellas persiguen.",
+      "retrieval_domains": [
+        "civil",
+        "familia",
+        "general"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "02a10c0c31121d05e19e08a0bafb4759283b77357beeb677a4af628bcb52ae7a",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "cgp-art167-suin-2026-08-31",
+      "version_basis": "Artículo 167 presente en consolidación SUIN verificada; fuente reportada vigente.",
+      "effective_from": null,
+      "effective_to": null
+    },
+    {
+      "id": "co-penal-art9",
+      "source_id": "co-penal-2000",
+      "article_or_section": "Artículo 9",
+      "text": "Para que la conducta sea punible se requiere que sea típica, antijurídica y culpable.",
+      "retrieval_domains": [
+        "penal"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "61effa0a749373b2c168d637f9a04283af2c665d0e14e0410fc74c1576130545",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "cpn-art9-suin-2026-08-31",
+      "version_basis": "Artículo 9 presente en consolidación SUIN de Ley 599 de 2000 reportada vigente.",
+      "effective_from": "2001-07-24",
+      "effective_to": null
+    },
+    {
+      "id": "co-cpp-art8",
+      "source_id": "co-cpp-2004",
+      "article_or_section": "Artículo 8",
+      "text": "En desarrollo de la actuación, una vez adquirida la condición de imputado, este tendrá derecho.",
+      "retrieval_domains": [
+        "penal"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "06e2b1b9a4515a5b40b8af6743bff6585c91c6f68df859916e13769918daae89",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "cpp-art8-suin-2026-08-31",
+      "version_basis": "Artículo 8 presente en consolidación SUIN de Ley 906 de 2004 reportada vigente; SUIN registra corrección del literal l por Decreto 2770 de 2004.",
+      "effective_from": "2005-01-01",
+      "effective_to": null
+    },
+    {
+      "id": "co-notariado-art12-historical",
+      "source_id": "co-notariado-960-1970",
+      "article_or_section": "Artículo 12",
+      "text": "Deberán celebrarse por escritura pública todos los actos y contratos de disposición o gravamen de bienes inmuebles.",
+      "retrieval_domains": [
+        "notarial",
+        "civil"
+      ],
+      "vigencia_status": "unresolved_current_status",
+      "conclusion_eligible": false,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "b8ce3fbc5f5c4f93d85dfa0bb935f4feac6aff8acd6a1375bc7e3ba978c7f16e",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "notariado-art12-base-1970",
+      "version_basis": "Pasaje del Decreto 960 de 1970; la cabecera SUIN reporta cese global 1999-03-10, por lo que no habilita conclusión actual.",
+      "effective_from": "1970-08-05",
+      "effective_to": null
+    },
+    {
+      "id": "co-registro-art5",
+      "source_id": "co-civil-registry-1260-1970",
+      "article_or_section": "Artículo 5",
+      "text": "Los hechos y los actos relativos al estado civil de las personas, deben ser inscritos en el competente registro civil.",
+      "retrieval_domains": [
+        "familia",
+        "notarial",
+        "civil"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "d2b3e3e23d04fa24673bd9bfc179cb845dc35acb44678eedf64dfc7c50da3d1c",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "registro-art5-suin-2026-08-31",
+      "version_basis": "Artículo 5 presente en consolidación SUIN del Decreto 1260 de 1970 reportado vigente.",
+      "effective_from": "1970-08-05",
+      "effective_to": null
+    },
+    {
+      "id": "co-infancia-art8",
+      "source_id": "co-childhood-1098-2006",
+      "article_or_section": "Artículo 8",
+      "text": "Se entiende por interés superior del niño, niña y adolescente, el imperativo que obliga a todas las personas.",
+      "retrieval_domains": [
+        "familia",
+        "constitucional"
+      ],
+      "vigencia_status": "source_reported_current",
+      "conclusion_eligible": true,
+      "source_type": "legislation",
+      "jurisdiction": "CO",
+      "language": "es",
+      "last_verified_at": "2026-08-31",
+      "sha256": "4eb94e179e0b86dc040097f31a73c6f95cbee21f0a9b1bd0a55c6aaeb1da7f98",
+      "excerpt_scope": "selected_excerpt",
+      "version_id": "infancia-art8-suin-2026-08-31",
+      "version_basis": "Artículo 8 presente en consolidación SUIN de Ley 1098 de 2006 reportada vigente.",
+      "effective_from": "2007-05-08",
+      "effective_to": null
+    }
+  ]
+}
