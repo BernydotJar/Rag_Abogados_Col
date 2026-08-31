@@ -16,3 +16,9 @@ The in-memory demo reranks up to 1000 vector candidates. A production-scale adap
 
 ## Searchable legal metadata without citation mutation
 For legislation, indexing embeds a separate `search_text` composed of the official title, legal identifier, article/section label, and exact governed excerpt. Lexical diagnostics keep `lexical_evidence` and `lexical_metadata` separate. The result's `text` remains the exact governed excerpt, so retrieval can answer queries such as a decree number plus article without changing the text shown or cited as authority.
+
+## Retrieval relevance is not legal sufficiency
+
+Hybrid retrieval continues to return related passages for inspection. The answer layer independently decides whether those passages can support the proposition asked. This distinction is intentional: high lexical/vector similarity is not enough to establish a deadline, venue, remedy, amendment, jurisprudential proposition, current validity or tariff.
+
+The public-law index now carries `certified_vigencia` from the governed source registry so current-validity questions can fail closed. The demo registry currently does not claim certified vigencia.

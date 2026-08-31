@@ -19,3 +19,13 @@ Default deterministic policy (`grounded-legal-answer.v1`):
 - minimum document-to-rule token corroboration: `0.20`.
 
 These values are versioned policy diagnostics, not hidden model confidence. They were selected against the governed 41-case golden set without weakening any release threshold. Historical/unresolved evidence remains citation-visible when specifically retrieved but cannot by itself make a current legal conclusion supported.
+
+## Lawyer-readiness support gate
+
+`grounded-legal-answer.v1` now separates retrieval relevance from answer sufficiency. A legal passage may be retrieved because it is related to the query, but it is admitted into a `supported` answer only after a deterministic support assessment.
+
+The assessment records `grounding.support_requirements` and `grounding.rejected_support`. It fails closed for explicit proposition types that require evidence the current passage does not contain, including deadlines/prescription, judicial competence, remedies, procedural steps, amendments/comparisons, jurisprudence, current-vigencia certification and tariffs/costs.
+
+Subject-anchor coverage prevents generic legal overlap (for example the word “contrato”) from making an unrelated article answer a more specific question (for example an arrendamiento procedure). Cross-article synthesis and private-document comparisons remain supported when each governed source addresses a distinct requested sub-question or the private document materially corroborates the legal subject.
+
+A retrieval score is not a probability of legal correctness, vigencia or confidence. It must never be exposed or described as such.

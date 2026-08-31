@@ -100,16 +100,27 @@ function renderAnswer(container) {
   const msg=m(); clear(container);
   if (!state.lastResearch) { container.append(node('div',{className:'answer-empty',text:msg.workspace.emptyAnswer})); return; }
   const {answer,latency_ms}=state.lastResearch;
-  const status=node('div',{className:`answer-status${answer.status==='supported'?'':' insufficient'}`,text:answer.status==='supported'?msg.answer.supported:msg.answer.insufficient});
+  const supported=answer.status==='supported';
+  const status=node('section',{className:`answer-state${supported?'':' insufficient'}`,attrs:{'data-answer-state':answer.status}},[
+    node('div',{className:'answer-state-label',text:supported?msg.answer.supported:msg.answer.insufficient}),
+    node('p',{className:'answer-state-detail',text:supported?msg.answer.supportedDetail:msg.answer.insufficientDetail})
+  ]);
   const direct=node('section',{className:'answer-section'},[node('h2',{text:answer.labels.respuesta}),node('p',{text:answer.respuesta})]);
   const basisList=node('ul',{className:'basis-list'});
   for (const item of answer.fundamento) basisList.append(node('li',{},[node('span',{text:item.statement}),node('span',{className:'basis-id',text:item.evidence_id})]));
   const basis=node('section',{className:'answer-section'},[node('h2',{text:answer.labels.fundamento}),answer.fundamento.length?basisList:node('p',{text:'—'})]);
+  const requirements=answer.grounding?.support_requirements??[];
+  const recoveryItems=requirements.map(key=>msg.answer.requirements?.[key]).filter(Boolean);
+  const recoveryList=node('ul',{className:'recovery-list'});
+  for(const item of (recoveryItems.length?recoveryItems:[msg.answer.recoveryGeneral])) recoveryList.append(node('li',{text:item}));
+  const recovery=supported?null:node('section',{className:'answer-section recovery-section',attrs:{'data-recovery':'true'}},[
+    node('h2',{text:msg.answer.recoveryTitle}),recoveryList
+  ]);
   const missingList=node('ul',{className:'missing-list'}); for(const item of answer.informacion_que_falta) missingList.append(node('li',{text:item}));
   const missing=node('section',{className:'answer-section'},[node('h2',{text:answer.labels.faltante}),answer.informacion_que_falta.length?missingList:node('p',{text:'—'})]);
   const limitsList=node('ul',{className:'limits-list'}); for(const item of answer.limites) limitsList.append(node('li',{text:item}));
   const limits=node('section',{className:'answer-section'},[node('h2',{text:answer.labels.limites}),limitsList]);
-  container.append(status,direct,basis,missing,limits,node('div',{className:'latency',text:`${latency_ms} ms · ${answer.grounding.policy.mode}`}));
+  container.append(status,direct,basis,recovery,missing,limits,node('div',{className:'latency',text:`${latency_ms} ms · ${answer.grounding.policy.mode}`}));
 }
 
 function renderEvidenceCard(result) {
@@ -117,20 +128,24 @@ function renderEvidenceCard(result) {
   const tag=node('span',{className:`evidence-tag${isLaw?'':' user'}`,text:isLaw?msg.evidence.law:msg.evidence.user});
   const relation=result.domain_relation==='cross_domain'?node('span',{className:'flag',text:msg.evidence.crossDomain}):null;
   const historical=result.usable_for_current_conclusion===false?node('span',{className:'flag',text:msg.evidence.historical}):null;
-  const flags=node('div',{className:'evidence-flags'},[relation,historical]);
+  const usedForGrounding=Boolean(state.lastResearch?.answer?.fundamento?.some(item=>item.evidence_id===result.id));
+  const rejected=isLaw&&!usedForGrounding;
+  const notSupport=rejected?node('span',{className:'flag caution',text:msg.evidence.notSupport}):null;
+  const flags=node('div',{className:'evidence-flags'},[relation,historical,notSupport]);
   const title=isLaw?(meta.official_title??meta.identifier??result.id):(meta.filename??result.id);
   const cite=isLaw?[meta.identifier,meta.article_or_section,meta.authority].filter(Boolean).join(' · '):`${meta.filename??''} · ${msg.diagnostics.chunks.toLocaleLowerCase()} ${Number(meta.chunk_index??0)+1}`;
-  const card=node('article',{className:'evidence-card',attrs:{'data-evidence-id':result.id}},[
-    node('div',{className:'evidence-type'},[tag,node('span',{className:'document-meta',text:`${Math.round(result.score*100)}%`})]),
-    node('h3',{text:title}),node('p',{className:'evidence-cite',text:cite}),flags,
+  const provenance=node('dl',{className:'evidence-provenance'});
+  if(isLaw&&meta.version_id) provenance.append(node('dt',{text:msg.evidence.version}),node('dd',{text:meta.version_id}));
+  if(isLaw&&meta.last_verified_at) provenance.append(node('dt',{text:msg.evidence.verified}),node('dd',{text:meta.last_verified_at}));
+  const card=node('article',{className:'evidence-card',attrs:{'data-evidence-id':result.id,'data-support-role':rejected?'related':'candidate'}},[
+    node('div',{className:'evidence-type'},[tag]),
+    node('h3',{text:title}),node('p',{className:'evidence-cite',text:cite}),flags,provenance,
     node('p',{className:'evidence-excerpt',text:result.text})
   ]);
-  if (isLaw&&meta.source_url) card.append(node('a',{text:msg.evidence.source,attrs:{href:meta.source_url,target:'_blank',rel:'noopener noreferrer'}}));
+  if (isLaw&&meta.source_url) card.append(node('a',{className:'evidence-source-action',text:msg.evidence.source,attrs:{href:meta.source_url,target:'_blank',rel:'noopener noreferrer'}}));
   const diag=node('details',{className:'diagnostics'}); diag.append(node('summary',{text:msg.evidence.score}));
   const grid=node('div',{className:'diagnostic-grid'});
   for (const [key,value] of Object.entries(result.score_components??{})) grid.append(node('span',{text:key}),node('span',{text:String(Math.round(value*1000)/1000)}));
-  if (meta.version_id) grid.append(node('span',{text:msg.evidence.version}),node('span',{text:meta.version_id}));
-  if (meta.last_verified_at) grid.append(node('span',{text:msg.evidence.verified}),node('span',{text:meta.last_verified_at}));
   diag.append(grid); card.append(diag); return card;
 }
 
@@ -158,17 +173,37 @@ async function submitResearch(event) {
 }
 
 function renderCenterPanel() {
-  const msg=m(),panel=node('section',{className:'workspace-panel center-panel'});
+  const msg=m(),snap=controller.snapshot(),panel=node('section',{className:'workspace-panel center-panel'});
   panel.append(node('div',{className:'query-header'},[
     node('div',{},[node('p',{className:'panel-kicker',text:msg.nav.research}),node('h1',{text:msg.workspace.question}),node('p',{className:'query-help',text:msg.workspace.questionHelp})]),
-    node('span',{className:'area-pill',text:msg.domains[state.domain]})
+    node('span',{className:'area-pill query-area',text:msg.domains[state.domain]})
   ]));
-  const textarea=node('textarea',{attrs:{id:'question-input',name:'question',placeholder:msg.workspace.placeholder,'aria-label':msg.workspace.question,'aria-describedby':'question-help',required:'true'}});
+  const coverage=node('section',{className:'coverage-boundary',attrs:{'data-testid':'coverage-boundary','aria-labelledby':'coverage-title'}},[
+    node('div',{className:'coverage-heading'},[
+      node('h2',{text:msg.coverage.title,attrs:{id:'coverage-title'}}),node('span',{className:'coverage-status',text:msg.coverage.partial})
+    ]),
+    node('div',{className:'coverage-facts'},[
+      node('span',{text:`${snap.sourceCount} ${msg.coverage.sources}`}),
+      node('span',{text:`${snap.evidenceCount} ${msg.coverage.passages}`}),
+      node('span',{className:'coverage-gap',text:msg.coverage.jurisprudence}),
+      node('span',{className:'coverage-gap',text:msg.coverage.fullText})
+    ]),
+    node('p',{className:'coverage-note',text:msg.coverage.note,attrs:{id:'coverage-note'}})
+  ]);
+  panel.append(coverage);
+  const textarea=node('textarea',{attrs:{id:'question-input',name:'question',placeholder:msg.workspace.placeholder,'aria-label':msg.workspace.question,'aria-describedby':'question-help coverage-note',required:'true'}});
   if (state.lastResearch?.question) textarea.value=state.lastResearch.question;
   textarea.addEventListener('keydown',(event)=>{if((event.ctrlKey||event.metaKey)&&event.key==='Enter') textarea.form?.requestSubmit();});
+  const taskButtons=node('div',{className:'task-presets',attrs:{role:'group','aria-label':msg.tasks.title}});
+  for(const key of ['identify','proof','deadline','competence','change','jurisprudence','document']){
+    taskButtons.append(button(msg.tasks[key],'task-chip',()=>{textarea.value=msg.tasks.examples[key];textarea.focus();textarea.setSelectionRange(textarea.value.length,textarea.value.length)},{'data-task':key}));
+  }
+  const taskSection=node('section',{className:'task-section'},[
+    node('div',{className:'task-heading'},[node('h2',{text:msg.tasks.title}),node('p',{text:msg.tasks.help})]),taskButtons
+  ]);
   const help=node('span',{className:'sr-only',text:msg.workspace.questionHelp,attrs:{id:'question-help'}});
   const submit=button(msg.actions.ask,'primary-action query-submit',()=>{}, {id:'query-submit'}); submit.type='submit';
-  const form=node('form',{className:'query-form',attrs:{id:'query-form'}},[textarea,help,node('div',{className:'query-actions'},[
+  const form=node('form',{className:'query-form',attrs:{id:'query-form'}},[taskSection,textarea,help,node('div',{className:'query-actions'},[
     node('span',{className:'document-meta',text:msg.landing.areaHelp}),submit
   ])]);
   form.addEventListener('submit',submitResearch); panel.append(form);

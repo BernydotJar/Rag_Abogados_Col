@@ -1,6 +1,7 @@
 import { buildCitation } from './citations.mjs';
 import { messageSet } from './messages.mjs';
 import { tokenize } from '../core/text.mjs';
+import { assessLegalSupport, assessSynthesisSupport, classifySupportRequirements } from './support-policy.mjs';
 
 const instructionLike=(text)=>/(ignora|ignore|system prompt|instrucciones del sistema|revela|override|do not follow|no sigas)/i.test(String(text));
 const OVERLAP_STOPWORDS=new Set(['a','al','ante','bajo','con','contra','de','del','desde','el','en','entre','es','esta','este','la','las','lo','los','o','para','por','que','se','sin','su','sus','un','una','y']);
@@ -34,21 +35,31 @@ export class GroundedAnswerBuilder {
   build({question='',results=[],locale='es',requireLegalEvidence=true,knownMissing=[]}={}) {
     const msg=messageSet(locale);
     const userDocs=results.filter(r=>r.metadata?.source_type==='user_document'&&Number(r.score)>=this.minUserDocumentScore);
-    const legalCandidates=results.filter(r=>{
+    const supportAssessments=new Map();
+    const baselineLegalCandidates=results.filter(r=>{
       if(r.metadata?.source_type!=='legislation'||Number(r.score)<this.minEvidenceScore)return false;
       const evidenceLex=Number(r.score_components?.lexical_evidence??r.score_components?.lexical??0);
       const metadataLex=Number(r.score_components?.lexical_metadata??0);
       const corroborated=userDocs.some(doc=>contentOverlap(r.text,doc.text)>=this.minDocumentCorroboration);
-      const specific=evidenceLex>=this.minLegalLexicalScore||metadataLex>=this.minLegalMetadataScore||corroborated;
+      let support=assessLegalSupport({question,result:r,allResults:results});
+      const onlyAnchorMismatch=support.reasons.length===1&&support.reasons[0]==='subject_anchor_mismatch';
+      const synthesis=assessSynthesisSupport(question,r);
+      if(onlyAnchorMismatch&&corroborated) support={...support,pass:true,reasons:[],anchor:{...support.anchor,corroborated:true}};
+      else if(onlyAnchorMismatch&&synthesis.pass) support={...support,pass:true,reasons:[],anchor:{...support.anchor,synthesis_part:true,synthesis_parts:synthesis.parts}};
+      supportAssessments.set(r.id,support);
+      const anchorSpecific=support.anchor?.pass===true||support.anchor?.corroborated===true||support.anchor?.synthesis_part===true;
+      const specific=evidenceLex>=this.minLegalLexicalScore||metadataLex>=this.minLegalMetadataScore||corroborated||anchorSpecific;
       if(!specific)return false;
-      if(r.domain_relation==='unscoped'&&evidenceLex<this.minUnscopedLegalLexicalScore&&metadataLex<this.minLegalMetadataScore&&!corroborated)return false;
+      if(r.domain_relation==='unscoped'&&evidenceLex<this.minUnscopedLegalLexicalScore&&metadataLex<this.minLegalMetadataScore&&!corroborated&&!anchorSpecific)return false;
       return true;
     });
+    const legalCandidates=baselineLegalCandidates.filter(r=>supportAssessments.get(r.id)?.pass===true);
     const strongestLegalScore=legalCandidates.reduce((max,r)=>Math.max(max,Number(r.score)),0);
     const legalRelevant=legalCandidates.filter(r=>strongestLegalScore===0||Number(r.score)>=strongestLegalScore*this.minLegalRelativeScore);
+    const historicalRelevant=baselineLegalCandidates.filter(r=>r.usable_for_current_conclusion===false&&supportAssessments.get(r.id)?.anchor?.pass===true&&!legalRelevant.includes(r));
     const legalEligible=legalRelevant.filter(r=>r.usable_for_current_conclusion!==false);
-    const legalBlocked=legalRelevant.filter(r=>r.usable_for_current_conclusion===false);
-    const relevant=[...legalRelevant,...userDocs];
+    const legalBlocked=[...legalRelevant.filter(r=>r.usable_for_current_conclusion===false),...historicalRelevant];
+    const relevant=[...legalRelevant,...historicalRelevant,...userDocs];
     const usable=requireLegalEvidence?legalEligible:[...legalEligible,...userDocs];
     const citationPairs=relevant.map(r=>({result:r,citation:buildCitation(r)}));
     const invalid=citationPairs.filter(x=>!x.citation.valid);
@@ -63,6 +74,8 @@ export class GroundedAnswerBuilder {
     const missing=[...knownMissing];
     if (requireLegalEvidence&&!legalEligible.length) missing.push(msg.missingLegal);
     for (const x of invalid) missing.push(`Citation metadata incomplete for ${x.citation.evidence_id??'unknown evidence'}: ${x.citation.missing.join(', ')}.`);
+    const supportRequirements=classifySupportRequirements(question);
+    const rejectedSupport=results.filter(r=>r.metadata?.source_type==='legislation'&&supportAssessments.has(r.id)&&!supportAssessments.get(r.id).pass).map(r=>({evidence_id:r.id,...supportAssessments.get(r.id)}));
     const limits=[msg.partial,msg.professional];
     if (legalBlocked.length) limits.push(msg.historical);
     if (relevant.some(r=>r.domain_relation==='cross_domain')) limits.push(msg.crossDomain);
@@ -70,7 +83,7 @@ export class GroundedAnswerBuilder {
       contract_version:'grounded-legal-answer.v1',locale,question,status,labels:msg.labels,
       respuesta,respuesta_evidence_ids:respuestaEvidenceIds,fundamento,fuentes:legalCitations,documentos_del_usuario:docCitations,
       informacion_que_falta:[...new Set(missing)],limites:[...new Set(limits)],
-      grounding:{policy:{min_evidence_score:this.minEvidenceScore,min_legal_lexical_score:this.minLegalLexicalScore,min_unscoped_legal_lexical_score:this.minUnscopedLegalLexicalScore,min_legal_metadata_score:this.minLegalMetadataScore,min_legal_relative_score:this.minLegalRelativeScore,min_user_document_score:this.minUserDocumentScore,min_document_corroboration:this.minDocumentCorroboration,mode:'extractive_evidence_only',require_legal_evidence:requireLegalEvidence},response_evidence_ids:respuestaEvidenceIds,evidence_ids:[...new Set([...fundamento.map(x=>x.evidence_id),...docCitations.map(x=>x.evidence_id)])],citation_failures:invalid.map(x=>x.citation),authoritative_quote_language:'es',translated_authority_quotes:false}
+      grounding:{policy:{min_evidence_score:this.minEvidenceScore,min_legal_lexical_score:this.minLegalLexicalScore,min_unscoped_legal_lexical_score:this.minUnscopedLegalLexicalScore,min_legal_metadata_score:this.minLegalMetadataScore,min_legal_relative_score:this.minLegalRelativeScore,min_user_document_score:this.minUserDocumentScore,min_document_corroboration:this.minDocumentCorroboration,mode:'extractive_evidence_only',require_legal_evidence:requireLegalEvidence},response_evidence_ids:respuestaEvidenceIds,evidence_ids:[...new Set([...fundamento.map(x=>x.evidence_id),...docCitations.map(x=>x.evidence_id)])],citation_failures:invalid.map(x=>x.citation),support_requirements:supportRequirements,rejected_support:rejectedSupport,authoritative_quote_language:'es',translated_authority_quotes:false}
     };
   }
 }

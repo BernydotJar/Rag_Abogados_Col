@@ -34,7 +34,7 @@ export async function indexLegalCorpus({registry,corpus,embeddingProvider,vector
         retrieval_domains:[...e.retrieval_domains],conclusion_eligible:e.conclusion_eligible!==false&&source.current_conclusion_eligible!==false,
         vigencia_status:e.vigencia_status,version_id:e.version_id,version_basis:e.version_basis,authority:source.authority,
         official_title:source.official_title,identifier:source.identifier,source_url:source.source_url,last_verified_at:e.last_verified_at,
-        source_sha256:source.sha256,evidence_sha256:e.sha256,coverage:source.coverage,search_text,search_metadata
+        source_sha256:source.sha256,evidence_sha256:e.sha256,coverage:source.coverage,certified_vigencia:source.certified_vigencia===true,search_text,search_metadata
       }
     });
   });

@@ -1,0 +1,1084 @@
+{
+  "schema_version": "lawyer-realism-eval.v1",
+  "jurisdiction": "CO",
+  "language": "es",
+  "minimum_cases": 100,
+  "research_basis": [
+    "Thomson Reuters 2025 legal GenAI workflows.",
+    "MinJusticia LegalApp frequent practical tasks.",
+    "Independent 30-question review with six false-supported near misses."
+  ],
+  "thresholds": {
+    "false_supported_rate": 0,
+    "expected_supported_recall": 1,
+    "behavior_accuracy": 1
+  },
+  "cases": [
+    {
+      "id": "s001",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿Cuáles son los elementos esenciales del contrato de trabajo?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cst-art23"
+      ]
+    },
+    {
+      "id": "s002",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿Qué exige la regla disponible sobre actividad personal, subordinación y salario?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cst-art23"
+      ]
+    },
+    {
+      "id": "s003",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿La subordinación y el salario aparecen como elementos del contrato de trabajo en la norma disponible?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cst-art23"
+      ]
+    },
+    {
+      "id": "s004",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "Localiza la disposición sobre actividad personal del trabajador, dependencia y salario.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cst-art23"
+      ]
+    },
+    {
+      "id": "s005",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿Qué artículo del corpus reúne actividad personal, subordinación y salario?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cst-art23"
+      ]
+    },
+    {
+      "id": "s006",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué requisitos exige la norma disponible para que una persona se obligue por un acto o declaración de voluntad?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-civil-art1502"
+      ]
+    },
+    {
+      "id": "s007",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué dice el corpus sobre capacidad, consentimiento, objeto lícito y causa lícita?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-civil-art1502"
+      ]
+    },
+    {
+      "id": "s008",
+      "category": "supported",
+      "domain": "civil",
+      "question": "Localiza la regla de capacidad legal, consentimiento sin vicio, objeto lícito y causa lícita.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-civil-art1502"
+      ]
+    },
+    {
+      "id": "s009",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué disposición contiene los requisitos del acto o declaración de voluntad?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-civil-art1502"
+      ]
+    },
+    {
+      "id": "s010",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué evidencia relaciona consentimiento, objeto lícito y causa lícita?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-civil-art1502"
+      ]
+    },
+    {
+      "id": "s011",
+      "category": "supported",
+      "domain": "constitucional",
+      "question": "¿Qué disposición caracteriza a Colombia como Estado social de derecho?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art1"
+      ]
+    },
+    {
+      "id": "s012",
+      "category": "supported",
+      "domain": "constitucional",
+      "question": "Localiza la regla que organiza a Colombia como República unitaria.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art1"
+      ]
+    },
+    {
+      "id": "s013",
+      "category": "supported",
+      "domain": "constitucional",
+      "question": "¿Dónde dice el corpus Estado social de derecho y República unitaria?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art1"
+      ]
+    },
+    {
+      "id": "s014",
+      "category": "supported",
+      "domain": "constitucional",
+      "question": "¿Qué artículo disponible describe a Colombia como Estado social de derecho?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art1"
+      ]
+    },
+    {
+      "id": "s015",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿Qué disposición constitucional menciona principios mínimos fundamentales para la ley laboral?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art53"
+      ]
+    },
+    {
+      "id": "s016",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "Localiza el artículo constitucional sobre principios mínimos fundamentales del trabajo.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art53"
+      ]
+    },
+    {
+      "id": "s017",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿Qué evidencia constitucional se refiere a principios mínimos fundamentales laborales?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art53"
+      ]
+    },
+    {
+      "id": "s018",
+      "category": "supported",
+      "domain": "laboral",
+      "question": "¿Dónde aparecen los principios mínimos que debe considerar la ley laboral?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-const-art53"
+      ]
+    },
+    {
+      "id": "s019",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué código regula la actividad procesal en asuntos civiles, comerciales, de familia y agrarios?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art1"
+      ]
+    },
+    {
+      "id": "s020",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué disposición del corpus menciona asuntos civiles, comerciales, de familia y agrarios?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art1"
+      ]
+    },
+    {
+      "id": "s021",
+      "category": "supported",
+      "domain": "civil",
+      "question": "Localiza el alcance procesal para asuntos civiles, comerciales, familiares y agrarios.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art1"
+      ]
+    },
+    {
+      "id": "s022",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué artículo disponible define el ámbito procesal de asuntos civiles, comerciales, de familia y agrarios?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art1"
+      ]
+    },
+    {
+      "id": "s023",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿A quién incumbe probar el supuesto de hecho de las normas que consagran el efecto jurídico perseguido?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art167"
+      ]
+    },
+    {
+      "id": "s024",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué regla del corpus trata sobre la carga de probar los hechos de una pretensión?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art167"
+      ]
+    },
+    {
+      "id": "s025",
+      "category": "supported",
+      "domain": "civil",
+      "question": "Localiza la disposición sobre probar el supuesto de hecho que produce el efecto jurídico.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art167"
+      ]
+    },
+    {
+      "id": "s026",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Qué evidencia habla de la carga de la prueba de los hechos?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art167"
+      ]
+    },
+    {
+      "id": "s027",
+      "category": "supported",
+      "domain": "civil",
+      "question": "¿Quién debe probar los hechos que sustentan el efecto jurídico que persigue?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cgp-art167"
+      ]
+    },
+    {
+      "id": "s028",
+      "category": "supported",
+      "domain": "penal",
+      "question": "¿Qué requiere la regla disponible para que una conducta sea punible?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-penal-art9"
+      ]
+    },
+    {
+      "id": "s029",
+      "category": "supported",
+      "domain": "penal",
+      "question": "¿Dónde aparecen tipicidad, antijuridicidad y culpabilidad como requisitos de la conducta punible?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-penal-art9"
+      ]
+    },
+    {
+      "id": "s030",
+      "category": "supported",
+      "domain": "penal",
+      "question": "Localiza la disposición sobre conducta típica, antijurídica y culpable.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-penal-art9"
+      ]
+    },
+    {
+      "id": "s031",
+      "category": "supported",
+      "domain": "penal",
+      "question": "¿Qué evidencia penal reúne típica, antijurídica y culpable?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-penal-art9"
+      ]
+    },
+    {
+      "id": "s032",
+      "category": "supported",
+      "domain": "penal",
+      "question": "¿Qué disposición disponible se refiere a derechos una vez adquirida la condición de imputado?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cpp-art8"
+      ]
+    },
+    {
+      "id": "s033",
+      "category": "supported",
+      "domain": "penal",
+      "question": "Localiza el artículo que menciona la condición de imputado y sus derechos.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cpp-art8"
+      ]
+    },
+    {
+      "id": "s034",
+      "category": "supported",
+      "domain": "penal",
+      "question": "¿Qué evidencia procesal penal habla del imputado una vez adquiere esa condición?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-cpp-art8"
+      ]
+    },
+    {
+      "id": "s035",
+      "category": "supported",
+      "domain": "familia",
+      "question": "¿Qué norma disponible exige inscribir hechos y actos relativos al estado civil?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-registro-art5"
+      ]
+    },
+    {
+      "id": "s036",
+      "category": "supported",
+      "domain": "familia",
+      "question": "Localiza la regla sobre inscripción de hechos y actos del estado civil.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-registro-art5"
+      ]
+    },
+    {
+      "id": "s037",
+      "category": "supported",
+      "domain": "familia",
+      "question": "¿Qué disposición del corpus menciona el competente registro civil?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-registro-art5"
+      ]
+    },
+    {
+      "id": "s038",
+      "category": "supported",
+      "domain": "familia",
+      "question": "¿Qué norma disponible define el interés superior del niño, niña y adolescente?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-infancia-art8"
+      ]
+    },
+    {
+      "id": "s039",
+      "category": "supported",
+      "domain": "familia",
+      "question": "Localiza la disposición sobre interés superior de niños, niñas y adolescentes.",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-infancia-art8"
+      ]
+    },
+    {
+      "id": "s040",
+      "category": "supported",
+      "domain": "familia",
+      "question": "¿Qué evidencia del corpus usa la expresión interés superior del niño, niña y adolescente?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-infancia-art8"
+      ]
+    },
+    {
+      "id": "s041",
+      "category": "supported",
+      "domain": "familia",
+      "question": "¿Dónde se define el imperativo asociado al interés superior del niño?",
+      "expected_status": "supported",
+      "expected_evidence_ids": [
+        "co-infancia-art8"
+      ]
+    },
+    {
+      "id": "u001",
+      "category": "deadline",
+      "domain": "civil",
+      "question": "¿Cuál es el término para contestar una demanda civil?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u002",
+      "category": "deadline",
+      "domain": "civil",
+      "question": "¿Cuántos días tengo para apelar una sentencia civil?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u003",
+      "category": "deadline",
+      "domain": "civil",
+      "question": "¿Cuál es la prescripción de una acción de responsabilidad civil contractual?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u004",
+      "category": "deadline",
+      "domain": "civil",
+      "question": "¿Qué término existe para demandar la nulidad de un contrato?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u005",
+      "category": "deadline",
+      "domain": "civil",
+      "question": "¿En cuántos años prescribe una obligación contenida en un pagaré?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u006",
+      "category": "deadline",
+      "domain": "laboral",
+      "question": "¿Cuál es el término exacto para demandar un despido sin justa causa?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u007",
+      "category": "deadline",
+      "domain": "laboral",
+      "question": "¿Cuánto tiempo tengo para reclamar salarios y prestaciones sociales?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u008",
+      "category": "deadline",
+      "domain": "laboral",
+      "question": "¿Cuántos días tiene el empleador para responder una reclamación laboral?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u009",
+      "category": "deadline",
+      "domain": "penal",
+      "question": "¿Cuál es el término en horas para legalizar una captura?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u010",
+      "category": "deadline",
+      "domain": "penal",
+      "question": "¿En cuánto tiempo prescribe la acción penal por estafa?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u011",
+      "category": "competence",
+      "domain": "familia",
+      "question": "¿Qué juez es territorialmente competente para un proceso de custodia en Medellín?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u012",
+      "category": "competence",
+      "domain": "familia",
+      "question": "¿Cuál juez conoce una demanda de alimentos si el menor vive en Cali?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u013",
+      "category": "competence",
+      "domain": "familia",
+      "question": "¿Qué competencia territorial aplica a un proceso de divorcio?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u014",
+      "category": "competence",
+      "domain": "civil",
+      "question": "¿Qué juez conoce una restitución de inmueble arrendado en Bogotá?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u015",
+      "category": "competence",
+      "domain": "civil",
+      "question": "¿Cuál es el juez competente para un proceso ejecutivo de mínima cuantía?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u016",
+      "category": "competence",
+      "domain": "civil",
+      "question": "¿Dónde debo presentar una demanda de responsabilidad contractual?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u017",
+      "category": "competence",
+      "domain": "laboral",
+      "question": "¿Qué juez laboral es competente para una demanda contra un empleador con sede en Barranquilla?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u018",
+      "category": "competence",
+      "domain": "laboral",
+      "question": "¿Cuál es el fuero territorial de una reclamación laboral?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u019",
+      "category": "procedure",
+      "domain": "familia",
+      "question": "¿Qué debo hacer para fijar una cuota alimentaria?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u020",
+      "category": "procedure",
+      "domain": "familia",
+      "question": "¿Cómo tramito un divorcio de mutuo acuerdo?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u021",
+      "category": "procedure",
+      "domain": "familia",
+      "question": "¿Cómo declaro una unión marital de hecho?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u022",
+      "category": "procedure",
+      "domain": "familia",
+      "question": "¿Qué pasos sigo para solicitar custodia de un menor?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u023",
+      "category": "procedure",
+      "domain": "civil",
+      "question": "¿Cómo cobro judicialmente el dinero que presté?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u024",
+      "category": "procedure",
+      "domain": "civil",
+      "question": "¿Qué debo hacer para hacer efectivo un pagaré?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u025",
+      "category": "procedure",
+      "domain": "civil",
+      "question": "¿Cómo termino un contrato de arrendamiento y recupero el inmueble?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u026",
+      "category": "procedure",
+      "domain": "civil",
+      "question": "¿Qué pasos tiene una restitución de inmueble arrendado?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u027",
+      "category": "procedure",
+      "domain": "constitucional",
+      "question": "¿Cómo presento una acción de tutela?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u028",
+      "category": "procedure",
+      "domain": "constitucional",
+      "question": "¿Qué debo hacer para interponer una tutela contra una EPS?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u029",
+      "category": "procedure",
+      "domain": "penal",
+      "question": "¿Cómo denuncio un delito ante la Fiscalía?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u030",
+      "category": "procedure",
+      "domain": "penal",
+      "question": "¿Qué debo hacer si fui víctima de estafa?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u031",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué sentencia reciente de la Corte Constitucional interpreta el artículo 53?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u032",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Cuál es la jurisprudencia más reciente sobre contrato realidad?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u033",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué precedente del Consejo de Estado trata la responsabilidad médica?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u034",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué providencia de la Corte Suprema resolvió un caso similar en 2025?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u035",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Existe línea jurisprudencial sobre estabilidad laboral reforzada?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u036",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué sentencias unifican la competencia en custodia de menores?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u037",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué jurisprudencia constitucional desarrolla el interés superior del niño?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u038",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Cuál es la sentencia relevante sobre unión marital de hecho?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u039",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué precedente existe sobre restitución de inmueble arrendado?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u040",
+      "category": "jurisprudence",
+      "domain": "general",
+      "question": "¿Qué jurisprudencia trata la prescripción de obligaciones civiles?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u041",
+      "category": "change_comparison",
+      "domain": "laboral",
+      "question": "¿Qué cambió con la reforma laboral de 2025 respecto del contrato de trabajo?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u042",
+      "category": "change_comparison",
+      "domain": "laboral",
+      "question": "¿Cómo era el artículo 23 antes y después de la Ley 2466 de 2025?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u043",
+      "category": "change_comparison",
+      "domain": "laboral",
+      "question": "¿Qué modificó la reforma laboral sobre subordinación?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u044",
+      "category": "change_comparison",
+      "domain": "general",
+      "question": "¿Qué cambios recientes tuvo el Código General del Proceso?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u045",
+      "category": "change_comparison",
+      "domain": "general",
+      "question": "¿Qué afectaciones normativas ha tenido el artículo 1502 del Código Civil?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u046",
+      "category": "change_comparison",
+      "domain": "general",
+      "question": "¿Cómo evolucionó la regla sobre registro civil desde 1970?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u047",
+      "category": "current_validity",
+      "domain": "notarial",
+      "question": "¿Sigue vigente hoy el artículo 12 del Decreto 960 de 1970?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u048",
+      "category": "current_validity",
+      "domain": "notarial",
+      "question": "¿Está vigente actualmente la exigencia de escritura pública para este acto?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u049",
+      "category": "current_validity",
+      "domain": "civil",
+      "question": "¿El artículo 1502 del Código Civil está vigente hoy?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u050",
+      "category": "current_validity",
+      "domain": "civil",
+      "question": "¿Sigue vigente actualmente el artículo 167 del CGP?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u051",
+      "category": "current_validity",
+      "domain": "laboral",
+      "question": "¿Está vigente hoy esta versión del artículo 23 del CST?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u052",
+      "category": "current_validity",
+      "domain": "laboral",
+      "question": "¿La norma laboral mostrada sigue vigente a la fecha?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u053",
+      "category": "tariff",
+      "domain": "notarial",
+      "question": "¿Cuál es la tarifa notarial vigente para una escritura pública?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u054",
+      "category": "tariff",
+      "domain": "notarial",
+      "question": "¿Cuánto cuesta autenticar una firma en una notaría?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u055",
+      "category": "tariff",
+      "domain": "notarial",
+      "question": "¿Cuántos pesos cuesta registrar una escritura?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u056",
+      "category": "tariff",
+      "domain": "general",
+      "question": "¿Cuál es la tarifa del IVA aplicable a este servicio profesional?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u057",
+      "category": "tariff",
+      "domain": "general",
+      "question": "¿Qué porcentaje de retención aplica a honorarios de abogado?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u058",
+      "category": "tariff",
+      "domain": "general",
+      "question": "¿Cuál es el costo de presentar esta demanda?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u059",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Qué requisitos tiene la declaración de unión marital de hecho?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u060",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Cómo se determina el monto de una cuota alimentaria?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u061",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Cuáles son las causales de divorcio en Colombia?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u062",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Qué requisitos tiene una adopción?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u063",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Cuándo procede la privación de la patria potestad?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u064",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Qué reglas existen para visitas de un menor?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u065",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Cómo se liquida una sociedad conyugal?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u066",
+      "category": "family_gap",
+      "domain": "familia",
+      "question": "¿Qué requisitos tiene una sucesión intestada?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u067",
+      "category": "administrative_gap",
+      "domain": "general",
+      "question": "¿Qué recurso administrativo procede contra una sanción de una superintendencia y en qué plazo?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u068",
+      "category": "administrative_gap",
+      "domain": "general",
+      "question": "¿Cómo presento una queja contra una EPS?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u069",
+      "category": "administrative_gap",
+      "domain": "general",
+      "question": "¿Qué procedimiento existe para reclamar una licencia de construcción?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u070",
+      "category": "administrative_gap",
+      "domain": "general",
+      "question": "¿Qué recursos proceden contra un acto administrativo particular?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u071",
+      "category": "administrative_gap",
+      "domain": "general",
+      "question": "¿Cuál es el término de caducidad de una acción de nulidad y restablecimiento?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u072",
+      "category": "administrative_gap",
+      "domain": "general",
+      "question": "¿Qué autoridad conoce una reclamación contra una alcaldía?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u073",
+      "category": "commercial_gap",
+      "domain": "civil",
+      "question": "¿Qué requisitos tiene una sociedad por acciones simplificada?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u074",
+      "category": "commercial_gap",
+      "domain": "civil",
+      "question": "¿Cómo se convoca válidamente una asamblea de accionistas?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u075",
+      "category": "commercial_gap",
+      "domain": "civil",
+      "question": "¿Qué responsabilidad tienen los administradores de una sociedad?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u076",
+      "category": "commercial_gap",
+      "domain": "civil",
+      "question": "¿Qué requisitos tiene una factura como título valor?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u077",
+      "category": "commercial_gap",
+      "domain": "civil",
+      "question": "¿Cuándo procede la acción cambiaria de un pagaré?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u078",
+      "category": "notarial_gap",
+      "domain": "notarial",
+      "question": "¿Qué documentos exige hoy una compraventa de inmueble?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u079",
+      "category": "notarial_gap",
+      "domain": "notarial",
+      "question": "¿Qué requisitos tiene una hipoteca sobre un inmueble?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u080",
+      "category": "notarial_gap",
+      "domain": "notarial",
+      "question": "¿Qué debe contener una escritura pública de compraventa?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u081",
+      "category": "notarial_gap",
+      "domain": "notarial",
+      "question": "¿Qué impuestos se pagan al vender un inmueble?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    },
+    {
+      "id": "u082",
+      "category": "notarial_gap",
+      "domain": "notarial",
+      "question": "¿Qué documentos necesita una sucesión notarial?",
+      "expected_status": "insufficient_evidence",
+      "expected_evidence_ids": []
+    }
+  ]
+}

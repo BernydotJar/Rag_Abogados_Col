@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const CDP='http://127.0.0.1:9222';
-const URL='http://127.0.0.1:4173/public/index.html';
-const screenshotDir='program/agents/ux/run-007/screenshots';
+const CDP=process.env.CDP_URL??'http://127.0.0.1:9222';
+const URL=process.env.TEST_URL??'http://127.0.0.1:4173/public/index.html';
+const screenshotDir=process.env.SCREENSHOT_DIR??'/tmp/rag-ux-trust-screenshots';
 fs.mkdirSync(screenshotDir,{recursive:true});
 
 class Session {
@@ -44,6 +44,13 @@ check('landing-ready',landing.lang==='es'&&landing.domains===8&&landing.status==
 await s.eval(`document.querySelector('[data-domain="laboral"]').click()`);
 await s.poll(`document.querySelector('#question-input')!==null`);
 check('workspace-entered',await s.eval(`window.__RAG_APP__.getState().workspace===true && document.querySelectorAll('.workspace-panel').length===3`));
+check('coverage-boundary-visible',await s.eval(`document.querySelector('[data-testid=\"coverage-boundary\"]')?.textContent.includes('9 fuentes oficiales') && document.querySelector('[data-testid=\"coverage-boundary\"]')?.textContent.includes('Jurisprudencia no incluida')`));
+check('lawyer-task-presets',await s.eval(`document.querySelectorAll('[data-task]').length===7 && [...document.querySelectorAll('[data-task]')].every(x=>x.getAttribute('aria-label')||x.textContent.trim())`));
+await s.eval(`document.querySelector('[data-task=\"deadline\"]').click()`);
+check('task-preset-fills-query',await s.eval(`document.querySelector('#question-input').value.toLowerCase().includes('plazo')`));
+await s.eval(`(()=>{const q=document.querySelector('#question-input');q.value='¿Cuál es el término para contestar una demanda civil?';document.querySelector('#query-form').requestSubmit();return true})()`);
+await s.poll(`window.__RAG_APP__.getState().lastStatus==='insufficient_evidence'`);
+check('insufficiency-recovery',await s.eval(`document.querySelector('[data-recovery=\"true\"]')?.textContent.includes('Falta una regla expresa de plazo')`));
 
 await s.eval(`(()=>{document.querySelector('[data-action="upload-workspace"]').click();return document.querySelector('#upload-dialog').open})()`);
 await s.poll(`document.querySelector('#document-file')!==null`);
@@ -57,6 +64,9 @@ await s.poll(`window.__RAG_APP__.getState().lastStatus!==null`,10000);
 const research=await s.eval(`({status:window.__RAG_APP__.getState().lastStatus,cards:document.querySelectorAll('.evidence-card').length,answer:document.querySelector('.answer-section p')?.textContent||'',hasLabor:[...document.querySelectorAll('[data-evidence-id]')].some(x=>x.dataset.evidenceId==='co-cst-art23')})`);
 check('research-grounded',research.status==='supported'&&research.cards>0&&research.cards<=5&&research.hasLabor,research);
 check('evidence-progressive-disclosure',await s.eval(`document.querySelector('[data-action=\"toggle-evidence\"]')!==null`));
+check('no-primary-retrieval-percent',await s.eval(`![...document.querySelectorAll('.evidence-type')].some(x=>/%/.test(x.textContent))`));
+check('official-source-primary-action',await s.eval(`document.querySelector('[data-evidence-id=\"co-cst-art23\"] .evidence-source-action')!==null`));
+check('provenance-primary',await s.eval(`document.querySelector('[data-evidence-id=\"co-cst-art23\"] .evidence-provenance')?.textContent.includes('Versión')`));
 
 const originalExcerpt=await s.eval(`document.querySelector('.evidence-card[data-evidence-id="co-cst-art23"] .evidence-excerpt')?.textContent`);
 for(const locale of ['en','pt','es']){
@@ -84,6 +94,6 @@ check('focus-style-declared',await s.eval(`[...document.styleSheets].some(ss=>{t
 report.runtime_errors=s.errors;
 check('runtime-errors',s.errors.length===0,{errors:s.errors});
 
-fs.writeFileSync('program/agents/ux/run-007/browser-smoke.json',JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync('program/agents/ux-trust/run-012/browser-smoke.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));
 s.close();
