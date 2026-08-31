@@ -1,0 +1,88 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Test and build static Pages artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Run governed test suite
+        run: node --test
+
+      - name: Build GitHub Pages artifact
+        env:
+          PAGES_BUILD_SHA: ${{ github.sha }}
+          PAGES_REQUIRE_CLEAN: "1"
+        run: node scripts/build-pages.mjs
+
+      - name: Verify GitHub Pages artifact
+        env:
+          PAGES_BUILD_SHA: ${{ github.sha }}
+        run: node scripts/verify-pages-artifact.mjs
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist-pages
+
+  deploy:
+    name: Deploy static site
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  verify-online:
+    name: Verify deployed Pages SHA
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Verify exact online artifact
+        env:
+          PAGES_ONLINE_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_BUILD_SHA: ${{ github.sha }}
+          PAGES_ONLINE_WAIT_SECONDS: 180
+        run: node scripts/verify-pages-online.mjs
